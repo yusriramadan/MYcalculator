@@ -10,9 +10,10 @@ let simpanLayar = false;
 let tombolAwal = true;
 let tmpAngka = "";
 let tmpOperator = "";
-let tmpAngOpe = ""
-let hitungAngOpe = ""
-layar.value = 0
+let tmpAngOpe = "";
+let hitungAngOpe = "";
+let samdengAngOpe = false;
+layar.value = 0;
 
 
 
@@ -92,16 +93,22 @@ function tombolKalkulator(e) {
 function displayCal(e) {
   const tombolKlik = e.target;
 
-  // if (!tombolKlik.classList.contains("tombol")) {
-  //   return;
-  // }
+  if (!tombolKlik.classList.contains("tombol")) {
+    return;
+  }
   
   const tombolInput = tombolKlik.innerText;
 
 
   if (tombolInput == "=") {
-    display.innerText = `${tmpAngOpe} ${hitungAngOpe} =`
-    simpanLayar = false;
+    if(samdengAngOpe) {
+      display.innerText = layar.value;
+      simpanLayar = false;
+      
+    } else {
+      samdengAngOpe = display.innerText = `${tmpAngOpe} ${hitungAngOpe} =`
+      simpanLayar = false;
+    }
 
   } else if (tombolInput == "." && simpanLayar == true) {
     display.innerText = `${tmpAngOpe} ${layar.value}`
@@ -126,10 +133,12 @@ function displayCal(e) {
 
   } else if (tombolAwal == true) {
     display.innerText = layar.value
+    samdengAngOpe = true;
+    
+    
 
   } else {
     alert("ada yang salah nih")
   }
   
 }
-
