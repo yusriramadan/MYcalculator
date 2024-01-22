@@ -8,11 +8,11 @@ let resetLayar = false;
 let hitung = false;
 let simpanLayar = false;
 let tombolAwal = true;
+let samdengAngOpe = false;
 let tmpAngka = "";
 let tmpOperator = "";
 let tmpAngOpe = "";
 let hitungAngOpe = "";
-let samdengAngOpe = false;
 layar.value = 0;
 
 
